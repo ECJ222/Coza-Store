@@ -25,7 +25,7 @@ SECRET_KEY = 'u#7@boq0m9xe199m_mutegtebcu&ygdprtl!4d28-ff85lfvwh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 HEROKU = ('ENV' in os.environ and os.environ['ENV'] == 'heroku')
-DEBUG = False
+DEBUG = not HEROKU
 
 if DEBUG:
     ALLOWED_HOSTS = ['*']
