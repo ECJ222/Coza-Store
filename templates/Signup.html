@@ -1,0 +1,318 @@
+{% extends 'account.html' %}
+
+{% block title %}
+COZA | Sign up
+{% endblock %}
+
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block content %}
+		<style type="text/css">
+			#signup{
+				display: inline-block;
+				border: 1px solid white;
+				background-color: white;
+				width: 53%;
+				height: 700px;
+				position: relative;
+				top:80px;
+				padding: 25px 20px 15px;
+				text-align: center;
+			}
+			.signin{
+				text-transform: uppercase;
+				display: block;
+				border-bottom: 1px solid  #767676;
+				float: right;
+				font-style: normal;
+				font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+				padding-top: 0px;
+				padding-bottom: 17px;
+				text-align: center;
+				width: 303px;
+				height: 50px; 
+    `			
+			}
+			h2{
+				font-size: 14px;
+				line-height: 1.7;
+				letter-spacing: 2px;
+				font-weight: 900;
+    			margin-block-start: 0.83em;
+			    margin-block-end: 0.83em;
+			    margin-inline-start: 0px;
+			    margin-inline-end: 0px;
+			    display: block;
+			}
+			.signup{
+				text-transform: uppercase;
+				display: block;
+				border: 1px solid #767676;
+				border-bottom: 0px solid;
+				float: left;
+				font-style: normal;
+				font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+				padding-top: 0px;
+				padding-bottom: 5px;
+				text-align: center;
+				width: 277px;
+				position: relative;
+				top: -51px;
+    `			
+			}
+			.a-link{
+				color: #767676;
+			}
+			.a-link:hover{
+				border-bottom: 0!important;
+			    color: #e4e4e4;
+			}
+			h1{
+				margin-bottom: 18px;
+				margin-top: 18px;
+				text-transform: uppercase;
+				font-size: 18px;
+				font-weight: 700; 
+				font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+				letter-spacing: 2.3px;
+				line-height: 1.2;
+				text-align: center;
+				font-style: normal;
+				position: relative;
+				top: 70px;
+				left: 139px;
+
+			}
+			.f-set1{
+				width: 100%;
+				float: left;
+				clear: both;
+				color: #767676;
+				min-width: 20%;
+				margin-top: 25px;
+				
+				
+			}
+			label{
+				    font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+				    font-style: normal;
+				    font-weight: 900;
+				    font-size: 14px;
+				    line-height: 1.7;
+				    letter-spacing: .4px;
+				    color: #767676;
+				    letter-spacing: 2px;
+				    position: relative;
+					left: -126px;
+
+			}
+			fieldset{
+				width: 100%;
+
+			}
+			input{
+				    height: 45px;
+				    font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+				    font-style: normal;
+				    font-weight: 400;
+				    font-size: 14px;
+				    line-height: 1.7;
+				    letter-spacing: .4px;
+				    width: 65%;
+				    position: relative;
+					left: 90px;
+					border: 1px solid #767676;
+					padding-left: 10px;
+			}
+			.f-set2{
+				width: 100%;
+				float: left;
+				clear: both;
+				color: #767676;
+				min-width: 20%;
+				margin-top: 25px;
+				
+				
+			}
+			#label{
+					font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+				    font-style: normal;
+				    font-weight: 900;
+				    font-size: 14px;
+				    line-height: 1.7;
+				    letter-spacing: .4px;
+				    color: #767676;
+				    letter-spacing: 2px;
+				    position: relative;
+					left: -148px;
+			}
+			input[type=submit]{
+				text-align: center;
+				cursor: pointer;
+				width: 55%;
+				height: 45px;
+				background-color: black;
+				color: white;
+				-webkit-appearance: button;
+				position: relative;
+				left: 120px;
+				text-transform: uppercase;
+			    font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+			    font-style: normal;
+			    font-weight: 700;
+			    font-size: 16px;
+			    line-height: 1.5;
+			    letter-spacing: 2px;
+			}
+			input[type=submit]:hover{
+				background-color: #767676;
+			}
+			#line{
+
+			    position: relative;
+			    display: inline-block;
+			    position: relative;
+			    top: 20px;
+			    left: 130px;
+			}
+			hr{
+				width: 45%;
+				position: relative;
+				top: -23px;
+			}
+			#hr{
+				width: 45%;
+				position: relative;
+				float: right;
+				top: 33px;
+			}
+			.google{
+				width: 65%;
+				height: 45px;
+				border: 0px solid ;
+				position: relative;
+				left: 90px;
+				top: -30px;
+			}
+			.facebook{
+				width: 65%;
+				height: 45px;
+				position: relative;
+				left: 90px;
+				top: -23px;
+			}
+			.a-gicon{
+				display: flex;
+				width: 100%;
+				height: 45px;
+				border: 2px solid #e4e4e4;
+				text-align: center;
+				vertical-align: middle;
+				align-items: center;
+			}
+			#h-2{
+				position: relative;
+				left: 30%;
+				color: black;
+				top: 0px;
+				font-size: 15px;
+			}
+			.a-ficon{
+				display: flex;
+				width: 100%;
+				height: 45px;
+				border: 2px solid #e4e4e4;
+				text-align: center;
+				vertical-align: middle;
+				align-items: center;
+
+			}
+			#img-1{
+				position: relative;
+				left: 1%;
+			}
+		</style>
+
+		<div id="signup">
+			<div class="signin">
+				<a class="a-link" href="{% url 'login' %} ">
+					<h2>Already registered?</h2>
+				</a>
+			</div>
+			<div class="signup">
+					<h2 id="h2">
+							New to coza?
+					</h2>
+							
+			</div>
+			<h1>sign up with....</h1>
+			<form method="post">
+				{% csrf_token %}
+				<fieldset>
+						<div class="f-set1">
+								<label style="text-transform:uppercase; position: relative; left: -150px;">Username:</label>
+								
+								<input type="text" name="username" id="username">
+						</div>
+						<br>
+						<div class="f-set1">
+								<label style="text-transform:uppercase">Email Address:</label>
+								
+								<input type="text" name="email" id="email">
+						</div>
+						<br>
+						<div class="f-set2">
+								<label id="label" style="text-transform:uppercase">Password:</label>
+								
+								<input type="password" name="password" id="password">
+						</div>
+						<br>
+						<div class="f-set2">
+								<input class="click" type="submit"  name="input" value="Join coza">
+						</div>
+
+				</fieldset>
+			</form>
+			<hr id="hr">
+			<h1 id="line">or</h1>
+			<hr>
+			<br>
+			<div class="google">
+				<a class="a-gicon" href="{% provider_login_url 'google' %}"><img id="img-1" style="float: left;" src="{% static 'images/icons8-google-30.png' %}" ><h1 id="h-2">GOOGLE</h1></a>
+			</div>
+			
+			<div class="facebook">
+				<a class="a-ficon" href="{% provider_login_url 'facebook' method='oauth2' %}"><img id="img-1" style="float: left;" src="{% static 'images/icons8-facebook-25.png' %}"><h1 id="h-2">FACEBOOK</h1></a>
+			</div>
+			<script type="text/javascript">
+				var click = document.getElementsByClassName('click');
+				
+
+				for ( let i = 0; i < click.length; i+=1){
+					click[i].addEventListener('click', function(e){
+
+						let email = document.getElementById('email').value;
+						let password = document.getElementById('password').value;
+						let username = document.getElementById('username').value;
+
+						if (email == '')
+						{
+							e.preventDefault();
+							document.getElementById('email').style.border = "1px solid red";
+						}
+						if (password == '')
+						{
+							e.preventDefault();
+							document.getElementById('password').style.border = "1px solid red";
+						}
+						if (username == '')
+						{
+							e.preventDefault();
+							document.getElementById('username').style.border = "1px solid red";
+						}
+					})
+				}
+			</script>
+
+{% endblock %}

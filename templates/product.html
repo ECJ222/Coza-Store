@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<title>{% block title %}COZA | Product {% endblock title%}</title>
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/MagnificPopup/magnific-popup.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+	<script type="text/javascript">
+		var user = '{{request.user}}';
+		console.log(user);
+		function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken');
+		if (csrftoken == null)
+		{
+			csrftoken = '{{csrf_token}}'
+		}
+		
+	</script>
+</head>
+<body class="animsition" id="body">
+	<style type="text/css">
+		.swal-overlay--show-modal{
+			transition : 1ms !important;
+		}
+		#link1{
+			color: black;
+		}
+		#link1:hover{
+			color: #007bff;
+		}
+		#link2{
+			color: black;
+		}
+		#link2:hover{
+			color: #007bff;
+		}
+		#account{
+			color: #b2b2b2;
+		}
+		#account:hover{
+			color: #e4e4e4;
+		}
+		.a-div{
+			border: 0px solid;
+			background-color: #b2b2b2;
+			position: relative;
+			top: -23px;
+			width: 9%;
+			height: 35px;
+			text-align: center;
+			border-radius: 20px;
+			left: 745px;
+			transition: 10s fadeIn;
+			z-index: 1;
+			
+		}
+		.a-l{
+			display: block;
+			border: 0px solid;
+			border-radius: 20px;
+			text-align: center;
+			height: 35px;
+			color: black;
+			position: relative;
+			top: 3px;
+			transition: 0.3s;
+		}
+		.a-l:hover{
+			color: #e4e4e4;
+		}
+	</style>
+	
+	<!-- Header -->
+	<header class="header-v4" id="header1">
+		
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<!-- Topbar -->
+			<div class="top-bar">
+				<div class="content-topbar flex-sb-m h-full container">
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m trans-04 p-lr-25" id="account">
+							Help & FAQs
+						</a>
+						{% if user %}
+						<a  class="flex-c-m trans-04 p-lr-25 account " id="account" style=" cursor: pointer; -webkit-appearance: button;">
+							Hi {{user}}!
+						</a>
+
+						
+						{% else %}
+						<a href="{% url 'login' %}" class="flex-c-m trans-04 p-lr-25" id="account" style="cursor: pointer; -webkit-appearance: button;">
+							Account
+						</a>
+						{% endif %}
+						
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			
+			<div class="wrap-menu-desktop how-shadow1" id="shadow">
+				<nav class="limiter-menu-desktop container">
+					
+					<!-- Logo desktop -->		
+					<a href="{% url 'home' %}" class="logo">
+						<img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO">
+					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+								<li>
+										<a href="{% url 'home' %}" id="link1">Home</a>	
+								</li>
+							
+								<li>
+										<a href="{% url 'shop' %}" id="link2">Shop</a>
+								</li>
+							
+						</ul>
+					</div>	
+					{% if user %}
+						<div class="a-div" id="a-div">
+							<a class="a-l" href="{% url 'logout' %}">logout</a>
+						</div>
+					{% endif %}
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+							<i class="zmdi zmdi-search"></i>
+						</div>
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{total_quantity}}">
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart1">
+							<i class="zmdi zmdi-favorite-outline"></i>
+						</div>
+						
+					</div>
+				</nav>
+			</div>	
+		</div>
+		
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<div class="logo-mobile">
+				<a href="{% url 'home' %}"><img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"></a>
+			</div>
+
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
+				</div>
+
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="{{total_quantity}}">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+
+				<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10  js-show-cart1">
+					<i class="zmdi zmdi-favorite-outline"></i>
+				</div>
+			</div>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+			<ul class="topbar-mobile">
+				<li>
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+				</li>
+
+				<li>
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m p-lr-10 trans-04" id="account">
+							Help & FAQs
+						</a>
+						{% if user %}
+						<a  class="flex-c-m p-lr-10 trans-04" style="color: #b2b2b2;" >
+							Hi {{user}}!
+						</a>
+						{% else %}
+						<a href="{% url 'login' %}" class="flex-c-m p-lr-10 trans-04" id="account">
+							Account
+						</a>
+						{% endif %}
+					</div>
+				</li>
+			</ul>
+
+			<ul class="main-menu-m" style=" background-color: #b2b2b2; ">
+				<li>
+					<a href="{% url 'home' %}">Home</a>
+				</li>
+				<hr>
+				<li>
+					<a href="{% url 'shop' %}">Shop</a>
+				</li>
+				{% if user %}
+				<hr>
+				<li>
+					<a href="{% url 'logout' %}">logout</a>
+				</li>
+				{% endif %}
+
+			</ul>
+		</div>
+
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="{% static 'images/icons/icon-close2.png' %}" alt="CLOSE">
+				</button>
+
+				<form method="get" action="{% url 'search' %}" class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+
+	</header>
+	
+	<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			{% if user == None %}
+				{% if not cart %}
+			 		<div class="container" style="text-align: center; position: relative; left: -20px; top: 100px;">
+					  <h2 style="font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+					  font-weight: 700;
+					  font-size: 18px;
+	    			  line-height: 24px;
+	    			  letter-spacing: .8px;
+	    			  margin: 8px 16px 0;
+	    			  color: #333;
+					  ">Your bag is empty</h2>	
+					  <p style="font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;">
+					  	Sign in to sync your bag items 
+					  	<br>
+					  	across all your devices.
+
+					  </p>
+					  <br>
+					  <div class="aborder" style=" border:0px solid; background-color: #222; border-radius: 20px; ">
+					  	<a href="" class="btn" style="text-transform: uppercase; 
+					  	font-family: Poppins-Medium;
+	    				font-size: 15px;
+	    				line-height: 1.466667;
+	    				justify-content: center;
+	    				align-items: center;
+	    				color: #fff;
+	    				width: 100%;">
+					  		sign in
+					  	</a>
+					  </div>
+					 </div>
+			 	{% endif %}
+			{% else %}
+				{% if not cart %}
+				<div class="container" style="text-align: center; position: relative; left: -20px; top: 100px;">
+					  <h2 style="font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+					  font-weight: 700;
+					  font-size: 18px;
+	    			  line-height: 24px;
+	    			  letter-spacing: .8px;
+	    			  margin: 8px 16px 0;
+	    			  color: #333;
+					  ">Your bag is empty</h2>	
+				</div>
+				{% endif %}
+			{% endif %}
+
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full">
+					{% for cart in cart %}
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img cart add-cart" data-product="{{cart.id}}" data-action="remove">
+							<img src="{{cart.product.imageUrl}}" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="{% url 'product-detail' cart.product.id %}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								{{cart.product.name}}
+							</a>
+							<p style="position: relative; top:-10px; font-size:10px;">{{cart.size}}</p>
+							<span class="header-cart-item-info">
+								{{cart.quantity}} x ${{cart.product.price|floatformat:2}}
+							</span>
+						</div>
+					</li>
+					{% endfor %}
+					
+				</ul>
+				{% if cart %}
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: ${{total|floatformat:2}}
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full" style="position: relative; left: 60px;">
+						<a href="{% url 'shopping-cart' %}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<!--Wishlist-->
+	<div class="wrap-header-cart js-panel-cart1" id="panel">
+		<div class="s-full js-hide-cart1"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Wishlist
+				</span>
+				
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart1">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			{% if user == None  and not wishlist %}
+
+			 	
+			 		<div class="container" style="text-align: center; position: relative; left: -20px; top: 100px;">
+					  <h2 style="font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+					  font-weight: 700;
+					  font-size: 18px;
+	    			  line-height: 24px;
+	    			  letter-spacing: .8px;
+	    			  margin: 8px 16px 0;
+	    			  color: #333;
+					  ">No saved items</h2>	
+					  <p style="font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;">
+					  	Sign in to sync your Saved Items 
+					  	<br>
+					  	across all your devices.
+
+					  </p>
+					  <br>
+					  <div class="aborder" style=" border:0px solid; background-color: #222; border-radius: 20px; ">
+					  	<a href="{% url 'login' %}" class="btn" style="text-transform: uppercase; 
+					  	font-family: Poppins-Medium;
+	    				font-size: 15px;
+	    				line-height: 1.466667;
+	    				justify-content: center;
+	    				align-items: center;
+	    				color: #fff;
+	    				width: 100%;">
+					  		sign in
+					  	</a>
+					  </div>
+					 </div>
+			 	
+			{% endif %}
+			
+			{% if user is not None and not wishlist  %}
+				
+				<div class="container" style="text-align: center; position: relative; left: -20px; top: 100px;">
+					  <h2 style="font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+					  font-weight: 700;
+					  font-size: 18px;
+	    			  line-height: 24px;
+	    			  letter-spacing: .8px;
+	    			  margin: 8px 16px 0;
+	    			  color: #333;
+					  ">No saved items</h2>	 
+				</div>
+			
+			{% endif %}
+					
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full">
+					{% for wishlist in wishlist %}
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img icon-heart2" data-product="{{wishlist.id}}" data-action="remove">
+							<img src="{{wishlist.product.imageUrl}}" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="{% url 'product-detail' wishlist.product.id %}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								{{wishlist.product.name}}
+							</a>
+
+							<span class="header-cart-item-info">
+								1 x ${{wishlist.product.price|floatformat:2}}
+							</span>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+				{% if wishlist %}
+				<div class="w-full">
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10" style="position: relative; left: 60px;">
+							View Cart
+						</a>
+
+					</div>
+				</div>
+			   {% endif %}
+			</div>
+			
+		</div>
+	</div>
+
+	
+	<!-- Product -->
+
+	{% block content %}
+
+	{% endblock %}
+		
+
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+	
+
+<!--===============================================================================================-->	
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/slick/slick.min.js' %}"></script>
+	<script src="{% static 'js/slick-custom.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/parallax100/parallax100.js' %}"></script>
+	<script>
+        $('.parallax100').parallax100();
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+	<script>
+		$('.gallery-lb').each(function() { // the containers for all your galleries
+			$(this).magnificPopup({
+		        delegate: 'a', // the selector for gallery item
+		        type: 'image',
+		        gallery: {
+		        	enabled:true
+		        },
+		        mainClass: 'mfp-fade'
+		    });
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/isotope/isotope.pkgd.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/sweetalert/sweetalert.min.js' %}"></script>
+	<script>
+		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
+			e.preventDefault();
+		});
+
+		$('.js-addwish-b2').each(function(){
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+
+		$('.js-addwish-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+
+		/*---------------------------------------------*/
+
+		$('.js-addcart-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+	
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+	
+	
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/wishlist.js'%}"></script>
+	<script type="text/javascript" src="{% static 'js/cart.js'%}"></script>
+	<script type="text/javascript" src="{% static 'js/filter1.js' %}"></script>
+	<script type="text/javascript">
+		var click_user = document.getElementsByClassName('account');
+		$('#a-div').hide();
+		for ( let i = 0; i < click_user.length; i+=1){
+			click_user[i].addEventListener('click', function(){
+				$('#a-div').show();
+			})
+		}
+	</script>
+
+</body>
+</html>

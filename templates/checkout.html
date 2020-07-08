@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	<title>Order has succefully been shipped</title>
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/MagnificPopup/magnific-popup.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+	<script type="text/javascript">
+		var user = '{{request.user}}';
+		console.log(user);
+		function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken');
+	</script>
+</head>
+<body>
+	<style type="text/css">
+		html{
+			height: 100%;
+			display: block;
+		}
+		@media only screen and (max-width: 1100px){
+			body{
+				width: 200%;
+			}
+		}
+		body{
+			background-color: white;
+			color: #000000;
+			font-family: futura-pt,Tahoma,Geneva,Verdana,Arial,sans-serif;
+		    font-style: normal;
+		    font-weight: 400;
+		    font-size: 16px;
+		    line-height: 1.5;
+		    letter-spacing: .4px;
+		}
+		#content{
+			    width: 100%;
+			    max-width: 1620px;
+			    min-width: 1340px;
+			    position: relative;
+			    top: -50px;
+		}
+	</style>
+	<div id="content">
+		<div id="header"  style="display:flex; align-items: center; justify-content: center; position: relative; top: 60px;">
+				<img src="{% static 'images/shipped.png' %}" alt="IMG-LOGO">
+		</div>
+		<div class="container" style="display:flex; align-items: center; justify-content: center;">
+		
+			<p style="color: black;">Your order has been successfully been shipped and will be on its way to you soon. We’re here to help with order questions or trail recommendations — just reply to this email coza.store.@gmail.com <a href="{% url 'home' %}">Visit Store</a></p>
+			<br>
+
+
+		</div>
+	</div>
+
+</body>
+</html>
