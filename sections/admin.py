@@ -3,7 +3,6 @@ from .models import *
 # Register your models here.
 from django.contrib.sites.models import Site
 
-admin.site.unregister(Site)
 class SiteAdmin(admin.ModelAdmin):
     fields = ('id', 'name', 'domain')
     readonly_fields = ('id',)
