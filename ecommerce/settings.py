@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
 
+    'storages',
+
 ]
 
 MIDDLEWARE = [
@@ -174,3 +176,12 @@ AUTHENTICATION_BACKENDS = [
 #Authentication
 LOGIN_REDIRECT_URL='/home'
 LOGOUT_REDIRECT_URL = '/home'
+
+AWS_ACCESS_KEY_ID = 'AKIA3HOKUEY26NVJJKLZ'
+AWS_SECRETE_ACCESS_KEY = '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'
+
+AWS_STORAGE_BUCKET_NAME = 'cozastores'
+AWS_S3_FILE_OVERWRITE = True
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
