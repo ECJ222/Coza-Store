@@ -156,7 +156,7 @@ STATICFILES_DIRS = [
 ]
 #SESSION_COOKIE_SECURE=True
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static', 'images')
 
 #Django social AllAuth
 SITE_ID = 1
