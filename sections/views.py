@@ -160,8 +160,12 @@ def ApiCall(request):
 		action = data['action']
 		
 
-		
-		customer = Customer.objects.get(username = User.objects.get(username = user_n))
+		try:
+			customer = Customer.objects.get(username = User.objects.get(username = user_n))
+		except:
+			customer_create = Customer.objects.get_or_create(username = User.objects.get(username = user_n))
+			customer = Customer.objects.get(username = User.objects.get(username = user_n))
+
 		print(productId,action,user_n)
 		if action == 'add':
 			product = Product.objects.get(id = productId)
@@ -197,7 +201,11 @@ def ApiCart(request):
 
 	if user_n != 'AnonymousUser':
 		
-		customer = Customer.objects.get(username = User.objects.get(username = user_n))
+		try:
+			customer = Customer.objects.get(username = User.objects.get(username = user_n))
+		except:
+			customer_create = Customer.objects.get_or_create(username = User.objects.get(username = user_n))
+			customer = Customer.objects.get(username = User.objects.get(username = user_n))
 
 		try:
 			productId = data['productId']
