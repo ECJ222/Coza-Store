@@ -161,7 +161,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static', 'images')
 
 #Django social AllAuth
-SITE_ID = 1
+SITE_ID = 5
 
 AUTHENTICATION_BACKENDS = [
     
@@ -181,7 +181,7 @@ AWS_ACCESS_KEY_ID = 'AKIA3HOKUEY2QYMIGDSD'
 AWS_SECRET_ACCESS_KEY = '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'
 
 AWS_STORAGE_BUCKET_NAME = 'coza-bucket'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = '%s.s4.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
