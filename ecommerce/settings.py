@@ -71,7 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -183,7 +183,6 @@ LOGIN_REDIRECT_URL='/home'
 LOGOUT_REDIRECT_URL = '/home'
 
 DEFAULT_FILE_STORAGE = env("DEFAULT_FILE_STORAGE")
-print(DEFAULT_FILE_STORAGE)
 DROPBOX_OAUTH2_TOKEN = env("DROPBOX_OAUTH2_TOKEN")
 DROPBOX_APP_KEY = env("DROPBOX_APP_KEY")
 DROPBOX_APP_SECRET_KEY = env("DROPBOX_APP_SECRET_KEY")
