@@ -12,11 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
-import environ
-
-env = environ.Env()
-# reading .env file
-environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u#7@boq0m9xe199m_mutegtebcu&ygdprtl!4d28-ff85lfvwh'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 HEROKU = ('ENV' in os.environ and os.environ['ENV'] == 'heroku')
@@ -182,9 +177,9 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_REDIRECT_URL='/home'
 LOGOUT_REDIRECT_URL = '/home'
 
-DEFAULT_FILE_STORAGE = env("DEFAULT_FILE_STORAGE")
-DROPBOX_OAUTH2_TOKEN = env("DROPBOX_OAUTH2_TOKEN")
-DROPBOX_APP_KEY = env("DROPBOX_APP_KEY")
-DROPBOX_APP_SECRET_KEY = env("DROPBOX_APP_SECRET_KEY")
-DROPBOX_FILE_UPLOAD_FOLDER = env("DROPBOX_FILE_UPLOAD_FOLDER")
-DROPBOX_ACCESS_TYPE = env("DROPBOX_ACCESS_TYPE")
+DEFAULT_FILE_STORAGE = os.environ["DEFAULT_FILE_STORAGE"]
+DROPBOX_OAUTH2_TOKEN = os.environ["DROPBOX_OAUTH2_TOKEN"]
+DROPBOX_APP_KEY = os.environ["DROPBOX_APP_KEY"]
+DROPBOX_APP_SECRET_KEY = os.environ["DROPBOX_APP_SECRET_KEY"]
+DROPBOX_FILE_UPLOAD_FOLDER = os.environ["DROPBOX_FILE_UPLOAD_FOLDER"]
+DROPBOX_ACCESS_TYPE = os.environ["DROPBOX_ACCESS_TYPE"]
