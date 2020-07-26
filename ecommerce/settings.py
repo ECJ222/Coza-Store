@@ -161,7 +161,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static', 'images')
 
 #Django social AllAuth
-SITE_ID = 5
+SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
     
@@ -177,15 +177,9 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_REDIRECT_URL='/home'
 LOGOUT_REDIRECT_URL = '/home'
 
-AWS_ACCESS_KEY_ID = 'AKIA3HOKUEY2QYMIGDSD'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_S3_REGION_NAME = 'us-west-2'
-AWS_STORAGE_BUCKET_NAME = 'cozastore-bucket-app'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-
-
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_OAUTH2_TOKEN = 'sGSmk0zXDXAAAAAAAAAAedVyyVKTGeUgZYPNaLoyWdSBqZZfnAILSM-oEqxDhpuo'
+DROPBOX_APP_KEY = "xiqigcl20puacrr"
+DROPBOX_APP_SECRET_KEY = "hmirrgp85ne7aay"
+DROPBOX_FILE_UPLOAD_FOLDER = "/COZASTORE"
+DROPBOX_ACCESS_TYPE = "dropbox"
