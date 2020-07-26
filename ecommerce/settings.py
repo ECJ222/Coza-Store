@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
+import environ
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -177,9 +182,9 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_REDIRECT_URL='/home'
 LOGOUT_REDIRECT_URL = '/home'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DROPBOX_OAUTH2_TOKEN = 'sGSmk0zXDXAAAAAAAAAAedVyyVKTGeUgZYPNaLoyWdSBqZZfnAILSM-oEqxDhpuo'
-DROPBOX_APP_KEY = "xiqigcl20puacrr"
-DROPBOX_APP_SECRET_KEY = "hmirrgp85ne7aay"
-DROPBOX_FILE_UPLOAD_FOLDER = "/COZASTORE"
-DROPBOX_ACCESS_TYPE = "dropbox"
+DEFAULT_FILE_STORAGE = env("DEFAULT_FILE_STORAGE")
+DROPBOX_OAUTH2_TOKEN = env("DROPBOX_OAUTH2_TOKEN")
+DROPBOX_APP_KEY = env("DROPBOX_APP_KEY")
+DROPBOX_APP_SECRET_KEY = env("DROPBOX_APP_SECRET_KEY")
+DROPBOX_FILE_UPLOAD_FOLDER = env("DROPBOX_FILE_UPLOAD_FOLDER")
+DROPBOX_ACCESS_TYPE = env("DROPBOX_ACCESS_TYPE")
