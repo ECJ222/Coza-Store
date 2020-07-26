@@ -166,7 +166,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static', 'images')
 
 #Django social AllAuth
-SITE_ID = 1
+SITE_ID = 5
 
 AUTHENTICATION_BACKENDS = [
     
