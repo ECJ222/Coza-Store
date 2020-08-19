@@ -4,4 +4,8 @@
 
 # install requirements
 
-```pip install -r requirements.txt```
+# `pip install -r requirements.txt`
+
+# start server
+
+# `python manage.py runserver`
