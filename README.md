@@ -1,2 +1,2 @@
-# Coza-Store
-![alt text](https://github.com/ECJ222/Laptop.Ng/blob/master/portfolios2.jpg?raw=true) 
+# CozaStore
+![alt text](https://github.com/ECJ222/Coza-Store/blob/master/portfolios1.jpg?raw=true) 
