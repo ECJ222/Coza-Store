@@ -6,6 +6,6 @@
 
 ### `pip install -r requirements.txt`
 
-# start servers
+# start server
 
 ### `python manage.py runserver`
